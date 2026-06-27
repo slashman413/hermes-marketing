@@ -1,0 +1,142 @@
+# 📢 行銷貼文產生器 — 可直接複製貼上
+
+---
+
+## Twitter/X (280字內)
+
+```
+1️⃣ 🚀 我用 GitHub Actions 做了一個自動生成 YouTube Shorts 的工具
+每天自動產出 2 支 Shorts，完全不用剪輯
+👉 免費試用：slashman413.gumroad.com/l/shortsgen-pro
+
+2️⃣ 📊 台股投資人注意！
+我開發了 TWSE Premium — 每日自動掃描台股技術訊號
+Email 通知買賣訊號
+👉 $49/月：github.com/slashman413/hermes-twse-premium
+
+3️⃣ 🔧 20+ 免費線上工具都在 GitHub Pages！
+計算機、PDF轉換、QR碼產生器、圖片壓縮...
+全部免費、免安裝、瀏覽器直接跑
+👉 slashman413.github.io/dev-tools/
+
+4️⃣ 💡 你知道 GitHub Actions 可以幫你賺錢嗎？
+我用它來自動：
+• 生成 YouTube Shorts 🎬
+• 抓取 Amazon 特價 🛒
+• 掃描台股訊號 📊
+• 產生 SEO 內容 📝
+全部開源 👉 github.com/slashman413
+```
+
+## Reddit r/taiwan
+
+```
+標題：我做了20+個免費線上工具，全部用GitHub Pages
+
+內文：
+大家好，我是台灣的獨立開發者。
+
+這半年我利用 GitHub Actions + Pages 做了這些免費工具：
+
+🔧 工具類
+• 計算機（BMI/百分比/貸款）
+• PDF工具（圖片轉PDF/合併）
+• 圖片壓縮/縮放
+• QR Code產生器
+• 顏色工具/調色盤
+• 開發者工具（Base64/URL/JWT）
+
+🎬 內容創作類
+• YouTube Shorts 自動生成器（每天自動產出2支）
+• 台股掃描器（技術指標訊號）
+• SEO 內容自動生成
+
+全部免費，開放原始碼：
+https://github.com/slashman413
+
+有什麼功能想加的歡迎建議！
+```
+
+## Reddit r/stock 或 r/Investment
+
+```
+標題：我做了個台股自動掃描器，每天Email通知技術訊號
+
+內文：
+我用 Python + GitHub Actions 做了一個台股掃描工具：
+
+每天自動：
+• 掃描所有上市股票
+• 計算 MACD/KD/RSI/ADX 等技術指標
+• 產出買賣訊號
+• Email 寄送報告
+
+免費版可看延遲數據：
+https://slashman413.github.io/twse-surge-stocks-dna/
+
+付費版 $49/月 有即時訊號 + Email通知：
+https://github.com/slashman413/hermes-twse-premium
+
+有興趣的可以參考原始碼！
+```
+
+## Dcard 理財版
+
+```
+標題：分享我做的台股自動掃描工具（免費）
+
+我是自己寫量化策略的小散戶
+把掃描器包成工具分享出來
+
+每天會自動跑：
+• 大盤技術指標
+• 個股買賣訊號
+• 產業輪動分析
+
+GitHub 開源：github.com/slashman413/twse-surge-stocks-dna
+
+完全免費，歡迎拿去用或改～
+```
+
+## Dcard 工作/科技版
+
+```
+標題：我用GitHub Actions做了一堆免費工具
+
+半年來做了這些：
+
+🧮 工具站（全部免費免安裝）
+calculators → 日常計算
+pdf-tools → PDF處理
+image-compressor → 圖片壓縮
+qr-code-generator → QR碼
+color-tools → 調色盤
+… 總共20+
+
+🎬 ShortsGen Pro → 自動產生YouTube Shorts
+📊 TWSE Premium → 台股掃描訊號
+
+全部開源 👉 github.com/slashman413
+有興趣的可以交流！
+```
+
+## LinkedIn
+
+```
+🚀 Side Project 變現之路
+
+這半年我用 GitHub Actions + Pages 建立了一系列工具：
+
+📊 成果
+• 20+ 免費工具（每月自然流量成長中）
+• YouTube Shorts 自動生成器（每天發布）
+• 台股掃描系統（技術指標自動分析）
+
+💡 關鍵學習
+1. GitHub Actions 不只是 CI/CD
+2. GitHub Pages 是免費的託管平台
+3. 開放原始碼 = 最好的行銷
+
+全部開源 👉 github.com/slashman413
+歡迎交流！
+```
