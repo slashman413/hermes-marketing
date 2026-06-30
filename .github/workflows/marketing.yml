@@ -18,17 +18,25 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Generate marketing content
+      - name: Install tweepy
+        run: pip install tweepy
+
+      - name: Generate & post marketing content
+        env:
+          X_API_KEY: ${{ secrets.X_API_KEY }}
+          X_API_SECRET: ${{ secrets.X_API_SECRET }}
+          X_ACCESS_TOKEN: ${{ secrets.X_ACCESS_TOKEN }}
+          X_ACCESS_TOKEN_SECRET: ${{ secrets.X_ACCESS_TOKEN_SECRET }}
         run: python scripts/marketing.py all
 
-      - name: Deploy SEO page
+      - name: Deploy marketing page
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./docs
           publish_branch: gh-pages
 
-      - name: Commit
+      - name: Commit rotation log
         run: |
           git config user.name "hermes-agent"
           git config user.email "hermes@nousresearch.com"
