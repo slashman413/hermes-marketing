@@ -1,73 +1,71 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>hermes 生態系 — 所有免費工具與服務</title>
-<meta name="description" content="免費線上工具、YouTube Shorts生成器、台股訊號、SEO內容引擎 — 全部開放原始碼">
+<html lang='zh-TW'>
+<head><meta charset='UTF-8'><meta name='viewport' content='width=device-width'>
+<title>hermes 生態系 — 工具與服務</title>
+<meta name='description' content='免費線上工具、YouTube自動化、台股訊號 — 全部開放原始碼'>
 <style>
-    * { margin:0; padding:0; box-sizing:border-box; }
-    body { font-family:-apple-system,sans-serif; background:#0a0a1a; color:#e2e8f0; max-width:900px; margin:auto; padding:20px; }
-    h1 { text-align:center; padding:30px 0; }
-    .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(250px,1fr)); gap:15px; }
-    .link-card { background:#1e293b; border-radius:16px; padding:20px; }
-    .link-card h3 { margin-bottom:5px; }
-    .link-card p { color:#94a3b8; font-size:0.9rem; }
-    .link-card .price { color:#f59e0b; margin:8px 0; }
-    .link-card a { color:#3b82f6; text-decoration:none; font-weight:bold; }
-    .promos { background:#1e293b; border-radius:16px; padding:20px; margin:20px 0; }
-    .promos li { padding:8px 0; border-bottom:1px solid #0f172a; color:#94a3b8; }
-    footer { text-align:center; padding:30px; color:#475569; }
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,sans-serif;background:#0a0a1a;color:#e2e8f0;max-width:1000px;margin:auto;padding:20px}
+h1{text-align:center;padding:30px 0;font-size:2rem}
+.subtitle{text-align:center;color:#64748b;margin-bottom:30px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.card{background:#1e293b;border-radius:16px;padding:24px;transition:transform .2s}
+.card:hover{transform:translateY(-4px)}
+.card h3{margin-bottom:8px;font-size:1.1rem}
+.card p{color:#94a3b8;font-size:.9rem;margin-bottom:12px}
+.price{display:inline-block;background:#f59e0b;color:#0a0a1a;padding:2px 10px;border-radius:20px;font-size:.8rem;font-weight:bold;margin-bottom:12px}
+.price.free{background:#22c55e;color:#0a0a1a}
+.card a{display:inline-block;margin-top:8px;color:#3b82f6;text-decoration:none;font-weight:bold}
+.card a:hover{text-decoration:underline}
+.promoted-badge{display:inline-block;background:#f59e0b;color:#0a0a1a;padding:2px 8px;border-radius:4px;font-size:.7rem;margin-left:8px}
+footer{text-align:center;padding:40px 0;color:#475569}
+.tweet-log{background:#1e293b;border-radius:12px;padding:16px;margin:20px 0;font-size:.85rem;color:#94a3b8}
+.copy-btn{background:#3b82f6;color:#fff;border:none;padding:6px 12px;border-radius:8px;cursor:pointer;font-size:.8rem}
 </style>
 </head>
 <body>
-    <h1>🌐 hermes 生態系</h1>
-    <p style="text-align:center;color:#64748b;">所有工具與服務一覽 — 免費使用，開放原始碼</p>
-    <div class="grid">
-        <div class="link-card">
+<h1>🌐 hermes 生態系</h1>
+<p class='subtitle'>所有工具與服務 — 免費使用・開放原始碼</p>
+<div class='grid'>
+        <div class='card' >
             <h3>ShortsGen Pro</h3>
-            <p>AI自動生成YouTube Shorts — 名言語錄 + 背景音樂 + 自動上傳</p>
-            <p class="price">💰 $29/mo</p>
-            <a href="https://github.com/slashman413/hermes-shortsgen" target="_blank">🔗 前往 →</a>
+            <p>AI自動生成YouTube Shorts — 名言+音樂+自動上傳</p>
+            <span class='price'>$29/mo</span>
+            <a href='https://ko-fi.com/s/896aa3c229'>了解更多 →</a>
         </div>
-        <div class="link-card">
+        <div class='card' >
             <h3>TWSE Premium</h3>
-            <p>台股即時掃描訊號 — Email/Telegram每日通知</p>
-            <p class="price">💰 $49/mo</p>
-            <a href="https://github.com/slashman413/hermes-twse-premium" target="_blank">🔗 前往 →</a>
+            <p>台股即時掃描訊號 — 每日Email通知買賣點</p>
+            <span class='price'>$49/mo</span>
+            <a href='https://ko-fi.com/s/b99720d13d'>了解更多 →</a>
         </div>
-        <div class="link-card">
-            <h3>Deal Finder</h3>
-            <p>每日Amazon特價 — 聯盟行銷自動比價</p>
-            <p class="price">💰 免費</p>
-            <a href="https://github.com/slashman413/hermes-deal-finder" target="_blank">🔗 前往 →</a>
+        <div class='card' style='border:2px solid #f59e0b'>
+            <h3>Deal Finder Pro</h3>
+            <p>每日Amazon特價自動通知 — 省錢就該自動化</p>
+            <span class='price'>$19/mo</span>
+            <a href='https://ko-fi.com/s/5730f8f947'>了解更多 →</a>
         </div>
-        <div class="link-card">
+        <div class='card' style='border:2px solid #f59e0b'>
             <h3>SEO Content Engine</h3>
-            <p>自動生成SEO優化文章 — GitHub Pages + AdSense</p>
-            <p class="price">💰 免費/$19 Pro</p>
-            <a href="https://github.com/slashman413/hermes-seo-farm" target="_blank">🔗 前往 →</a>
+            <p>自動生成SEO文章 — GitHub Pages免費託管</p>
+            <span class='price'>$19/mo</span>
+            <a href='https://ko-fi.com/s/a03f0a8e3b'>了解更多 →</a>
         </div>
-        <div class="link-card">
-            <h3>免費線上工具集</h3>
-            <p>計算機、PDF、壓縮、QR碼等20+免費工具</p>
-            <p class="price">💰 完全免費</p>
-            <a href="https://slashman413.github.io/dev-tools/" target="_blank">🔗 前往 →</a>
+        <div class='card' >
+            <h3>免費工具集</h3>
+            <p>計算機+PDF+QR碼+圖片壓縮 20+免費線上工具</p>
+            <span class='price free'>Free</span>
+            <a href='https://slashmantools.us/'>了解更多 →</a>
         </div>
-        <div class="link-card">
-            <h3>Gentle Soul YouTube</h3>
-            <p>每日心靈語錄 Shorts — 療癒人心</p>
-            <p class="price">💰 免費訂閱</p>
-            <a href="https://www.youtube.com/@GentleSoul666" target="_blank">🔗 前往 →</a>
-        </div>
-        <div class="link-card">
-            <h3>Free GitHub Tools</h3>
-            <p>開放原始碼工具 — 人人都能免費使用</p>
-            <p class="price">💰 免費開源</p>
-            <a href="https://github.com/slashman413" target="_blank">🔗 前往 →</a>
+        <div class='card' >
+            <h3>Gentle Soul</h3>
+            <p>每日心靈語錄Shorts — 療癒系AI影片頻道</p>
+            <span class='price free'>Free</span>
+            <a href='https://www.youtube.com/@GentleSoul666'>了解更多 →</a>
         </div></div>
-    <div class="promos">
-        <h2>🔄 交叉推廣文案</h2>
-        <ul><li>🎬 喜歡今天的 Shorts嗎？這裡有更多免費工具 👉 https://github.com/slashman413/hermes-shortsgen</li><li>🔧 用完工具了嗎？來看今天的療癒 Shorts 👉 https://github.com/slashman413</li><li>💻 所有工具都是開源的！來看看原始碼 👉 https://github.com/slashman413/hermes-deal-finder</li><li>💻 所有工具都是開源的！來看看原始碼 👉 https://www.youtube.com/@GentleSoul666</li><li>🌟 免費線上工具集 已經幫助多位使用者！計算機、PDF、壓縮、QR碼等20+免費工具 👉 https://slashman413.github.io/dev-tools/ #productivity</li></ul>
-    </div>
-    <footer>hermes-marketing · 每日自動更新行銷內容</footer>
+<footer>
+hermes-marketing · 每日自動行銷推廣<br>
+<small>更新時間: 2026-06-30 14:25 UTC</small>
+</footer>
 </body>
 </html>
