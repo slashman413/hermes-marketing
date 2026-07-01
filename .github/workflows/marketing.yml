@@ -29,17 +29,18 @@ jobs:
           X_ACCESS_TOKEN_SECRET: ${{ secrets.X_ACCESS_TOKEN_SECRET }}
         run: python scripts/marketing.py all
 
-      - name: Deploy marketing page
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./docs
-          publish_branch: gh-pages
-
-      - name: Commit rotation log
+      - name: Commit to main
         run: |
           git config user.name "hermes-agent"
           git config user.email "hermes@nousresearch.com"
           git add docs/
           git diff --staged --quiet || git commit -m "auto: daily marketing content"
           git push
+
+      - name: Deploy marketing page
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs
+          publish_branch: gh-pages
+          keep_files: false
