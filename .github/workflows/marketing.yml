@@ -42,14 +42,6 @@ jobs:
           git diff --staged --quiet || git commit -m "auto: daily marketing content"
           git push
 
-      - name: Deploy marketing page
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./docs
-          publish_branch: gh-pages
-          keep_files: false
-
   notify-failure:
     needs: [market]
     if: failure()
