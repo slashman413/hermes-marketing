@@ -3,9 +3,16 @@
 hermes-marketing: Automated cross-platform marketing engine.
 Posts to X/Twitter and generates SEO pages for all hermes products.
 """
-import os, sys, json, random, logging
+import os, sys, json, random, logging, hashlib, time
 from pathlib import Path
 from datetime import datetime, timezone
+
+# ── Anti-ban safeguards ──
+# X free tier caps writes (~17/day, 500/mo). Stay well under and never repeat
+# a tweet verbatim (X rejects duplicates and spam-flags repetitive promo).
+MAX_TWEETS_PER_DAY = 6
+DEDUP_HISTORY = 40          # remember this many recent tweet hashes
+POST_SPACING_SEC = (25, 90) # jittered pause between posts in one run
 
 BASE_DIR = Path(__file__).parent.parent
 logging.basicConfig(level=logging.INFO, format="[%(levelname)s] %(message)s")
@@ -63,6 +70,40 @@ PRODUCTS = {
     },
 }
 
+# ── Curated ready-to-post tweets (content pack 2026-07-04) ──
+# Preferred over auto-assembled templates; each is used at most once per
+# DEDUP window so the timeline never shows a duplicate.
+CURATED_POSTS = [
+    "I shipped 20+ free browser tools this year — calculators, PDF merge, "
+    "QR codes, image compression, color palettes, dev utilities.\n"
+    "No signup. No ads-wall. Just open and use.\n"
+    "👉 https://slashmantools.us\n#buildinpublic #FreeTools #IndieHacker",
+
+    "還在盯盤怕錯過台股買賣點？\n"
+    "TWSE Premium 每天自動掃描全上市股票的 MACD/KD/RSI/ADX，訊號直接寄到你 Email。\n"
+    "延遲版免費看：https://slashmantools.us/twse-surge-stocks-dna/\n"
+    "即時版 $49/月 👉 https://ko-fi.com/s/b99720d13d\n#台股 #投資 #量化",
+
+    "My GitHub Actions bot makes 2 YouTube Shorts a day while I sleep — "
+    "quote + music + auto-upload, zero editing.\n"
+    "See it live: https://www.youtube.com/@GentleSoul666\n"
+    "Run it yourself ($29/mo): https://ko-fi.com/s/896aa3c229\n"
+    "#YouTubeShorts #AIContent #automation",
+
+    "Guessing which Taiwan ETF to buy?\n"
+    "Free dashboard: fundamentals + technicals for 0050 / 0056 / 00878, "
+    "refreshed daily from a whole-market scan.\n"
+    "👉 https://slashmantools.us/tw-etf-dashboard/dashboard.html\n"
+    "#ETF #台股 #Investing #00878",
+
+    "I run a one-person automation setup on free infra:\n"
+    "• GitHub Actions = my cron + workers\n"
+    "• GitHub Pages = 20+ tool sites\n"
+    "• Ko-fi = checkout\n"
+    "All open source 👇\nhttps://github.com/slashman413\n"
+    "#buildinpublic #indiehackers",
+]
+
 # ── Tweet templates (rotated for variety) ──
 TWEET_TEMPLATES = [
     "{emoji} {name} — {tagline}\n\n👉 {url}\n\n#{hashtags}",
@@ -114,23 +155,30 @@ def save_rotation_log(data: dict):
     path.write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8")
 
 
-def pick_products(log_data: dict, count: int = 2) -> list[str]:
-    """Pick products to promote, rotating so no product is skipped too long."""
-    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
-    if log_data.get("last_date") != today:
-        log_data["last_date"] = today
-        log_data["tweet_count"] = 0
+def _tweet_hash(text: str) -> str:
+    return hashlib.sha256(text.strip().encode("utf-8")).hexdigest()[:16]
 
-    # Sort by least recently promoted
-    keys = list(PRODUCTS.keys())
-    keys.sort(key=lambda k: log_data.get("last_promoted", {}).get(k, ""))
-    picked = keys[:count]
 
-    for k in picked:
-        log_data.setdefault("last_promoted", {})[k] = datetime.now(timezone.utc).isoformat()
-    log_data["tweet_count"] += len(picked)
+def pick_fresh_text(log_data: dict) -> str | None:
+    """Return a curated tweet not posted within the dedup window, else a
+    freshly-built template tweet. Returns None only if everything is a dup."""
+    posted = log_data.setdefault("posted_hashes", [])
+    fresh = [t for t in CURATED_POSTS if _tweet_hash(t) not in posted]
+    if fresh:
+        return random.choice(fresh)
+    # Curated pool exhausted for now — fall back to a template, retry for a
+    # non-duplicate a few times before giving up.
+    for _ in range(8):
+        candidate = build_tweet(random.choice(list(PRODUCTS.keys())))
+        if _tweet_hash(candidate) not in posted:
+            return candidate
+    return None
 
-    return picked
+
+def record_posted(log_data: dict, text: str):
+    posted = log_data.setdefault("posted_hashes", [])
+    posted.append(_tweet_hash(text))
+    del posted[:-DEDUP_HISTORY]  # keep only the most recent N
 
 
 def build_tweet(product_key: str) -> str:
@@ -244,14 +292,36 @@ def main():
     log_data = load_rotation_log()
 
     if cmd in ("tweet", "all"):
-        products = pick_products(log_data)
-        log.info(f"Promoting: {', '.join(products)}")
-        for pk in products:
-            tweet = build_tweet(pk)
+        today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+        if log_data.get("last_date") != today:
+            log_data["last_date"] = today
+            log_data["tweet_count"] = 0
+
+        remaining = MAX_TWEETS_PER_DAY - log_data.get("tweet_count", 0)
+        want = min(2, max(0, remaining))
+        if want == 0:
+            log.info(f"⏸ Daily cap reached ({MAX_TWEETS_PER_DAY}); skipping tweets.")
+        for i in range(want):
+            tweet = pick_fresh_text(log_data)
+            if tweet is None:
+                log.info("⏸ No non-duplicate tweet available; skipping.")
+                break
             post_to_x(tweet)
+            record_posted(log_data, tweet)
+            log_data["tweet_count"] = log_data.get("tweet_count", 0) + 1
+            if i < want - 1:
+                time.sleep(random.randint(*POST_SPACING_SEC))
 
     if cmd in ("seo", "all"):
-        products = pick_products(log_data)
+        # Highlight the least-recently-promoted products (no side effects — the
+        # HTML page must not consume the daily tweet budget).
+        products = sorted(
+            PRODUCTS.keys(),
+            key=lambda k: log_data.get("last_promoted", {}).get(k, ""),
+        )[:2]
+        now_iso = datetime.now(timezone.utc).isoformat()
+        for k in products:
+            log_data.setdefault("last_promoted", {})[k] = now_iso
         html = generate_html(products)
         docs_dir = BASE_DIR / "docs"
         docs_dir.mkdir(exist_ok=True)
