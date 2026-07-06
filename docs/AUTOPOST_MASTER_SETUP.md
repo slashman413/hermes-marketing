@@ -12,6 +12,12 @@ an interactive prompt that sets all secrets for one channel via `gh` CLI
 (requires `gh auth login`). Turns the "click 6 fields in the GitHub UI"
 workflow into a 2-minute paste job.
 
+**Verify after setup**: run the **Preflight auto-post tokens** workflow (Actions
+tab → Run workflow), or `python scripts/preflight.py` locally. It calls each
+channel's "who am I" endpoint using the secrets and reports OK / FAIL / SKIP
+without posting anything. Do this right after adding tokens — a typo becomes
+visible in seconds instead of hours.
+
 ## Channels at a glance
 
 | Channel | Status | Script | Setup doc | Cadence | Ban-risk |
