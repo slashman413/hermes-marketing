@@ -271,11 +271,29 @@ def generate_html(promoted: list[str]) -> str:
             <a href='{p['url']}'>了解更多 →</a>
         </div>"""
 
+    canonical = "https://slashman413.github.io/hermes-marketing/"
+    og_image = "https://slashmantools.us/og.png"  # reuse the hub's shared OG image
     return f"""<!DOCTYPE html>
 <html lang='zh-TW'>
-<head><meta charset='UTF-8'><meta name='viewport' content='width=device-width'>
+<head>
+<meta charset='UTF-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
 <title>hermes 生態系 — 工具與服務</title>
 <meta name='description' content='免費線上工具、YouTube自動化、台股訊號 — 全部開放原始碼'>
+<link rel='canonical' href='{canonical}'>
+<!-- Open Graph (Facebook / LinkedIn / Discord / Slack) -->
+<meta property='og:type' content='website'>
+<meta property='og:site_name' content='slashman413'>
+<meta property='og:title' content='hermes 生態系 — 工具與服務'>
+<meta property='og:description' content='免費線上工具、YouTube 自動化、台股訊號 — 全部開放原始碼'>
+<meta property='og:url' content='{canonical}'>
+<meta property='og:image' content='{og_image}'>
+<meta property='og:locale' content='zh_TW'>
+<!-- Twitter Card -->
+<meta name='twitter:card' content='summary_large_image'>
+<meta name='twitter:title' content='hermes 生態系 — 工具與服務'>
+<meta name='twitter:description' content='免費線上工具、YouTube 自動化、台股訊號 — 全部開放原始碼'>
+<meta name='twitter:image' content='{og_image}'>
 <style>
 *{{margin:0;padding:0;box-sizing:border-box}}
 body{{font-family:-apple-system,sans-serif;background:#0a0a1a;color:#e2e8f0;max-width:1000px;margin:auto;padding:20px}}
