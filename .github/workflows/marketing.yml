@@ -66,8 +66,18 @@ jobs:
           git config user.name "Massor"
           git config user.email "slashman413@gmail.com"
           git add docs/
-          git diff --staged --quiet || git commit -m "auto: daily marketing content"
-          git push
+          if git diff --staged --quiet; then
+            echo "no docs/ changes; skipping commit"
+          else
+            git commit -m "auto: daily marketing content"
+            # Retry push up to 3× with rebase, in case main advanced during the run
+            # (manual pushes, another workflow) — otherwise state file updates get lost.
+            for attempt in 1 2 3; do
+              if git push; then break; fi
+              echo "push attempt $attempt failed; rebasing on origin/main"
+              git pull --rebase origin main
+            done
+          fi
 
   notify-failure:
     needs: [market]
