@@ -146,6 +146,10 @@ def post_to_bluesky(text: str) -> bool:
         return False
 
 
+def _live() -> bool:
+    return bool(os.environ.get("BLUESKY_HANDLE") and os.environ.get("BLUESKY_APP_PASSWORD"))
+
+
 def main():
     state = _load_state()
     today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
@@ -156,15 +160,19 @@ def main():
     want = min(2, max(0, MAX_POSTS_PER_DAY - state.get("post_count", 0)))
     if want == 0:
         log.info(f"daily cap reached ({MAX_POSTS_PER_DAY}); skipping.")
-        _save_state(state)
+        if _live():
+            _save_state(state)
         return
 
+    live = _live()
     for i in range(want):
         text = _pick_fresh(state)
         if text is None:
             log.info("no fresh post available; skipping.")
             break
-        if post_to_bluesky(text):
+        if post_to_bluesky(text) and live:
+            # Only persist state after a REAL live post; dry-runs must not
+            # burn the daily cap (else first live day is already at ceiling).
             state["post_count"] = state.get("post_count", 0) + 1
             posted = state.setdefault("posted_hashes", [])
             posted.append(_hash(text))
@@ -172,7 +180,8 @@ def main():
         if i < want - 1:
             time.sleep(random.randint(*POST_SPACING_SEC))
 
-    _save_state(state)
+    if live:
+        _save_state(state)
 
 
 if __name__ == "__main__":

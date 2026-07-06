@@ -113,6 +113,10 @@ def _too_soon(state: dict) -> bool:
     return (datetime.now(timezone.utc) - dt).days < MIN_DAYS_BETWEEN_POSTS
 
 
+def _live() -> bool:
+    return bool(os.environ.get("LINKEDIN_ACCESS_TOKEN") and os.environ.get("LINKEDIN_ACTOR_URN"))
+
+
 def post_to_linkedin(text: str) -> bool:
     """Post via the official v2 UGC Posts API. Dry-run if tokens missing."""
     token = os.environ.get("LINKEDIN_ACCESS_TOKEN")
@@ -165,7 +169,9 @@ def main():
     if text is None:
         log.info("no fresh post available, skipping.")
         return
-    if post_to_linkedin(text):
+    if post_to_linkedin(text) and _live():
+        # Only persist state after a REAL live post; dry-runs must not burn
+        # cadence budget (else first live run gets blocked by fake "recent" post).
         state["last_post_at"] = datetime.now(timezone.utc).isoformat()
         posted = state.setdefault("posted_hashes", [])
         posted.append(_hash(text))

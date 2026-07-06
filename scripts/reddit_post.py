@@ -152,13 +152,20 @@ def post_to_reddit(cand: dict) -> bool:
         return False
 
 
+def _live() -> bool:
+    return all(os.environ.get(k) for k in
+               ("REDDIT_CLIENT_ID","REDDIT_CLIENT_SECRET","REDDIT_USERNAME","REDDIT_PASSWORD"))
+
+
 def main():
     state = _load_state()
     cand = _pick_candidate(state)
     if cand is None:
         log.info("no eligible post (cadence gate or dedup exhausted).")
         return
-    if post_to_reddit(cand):
+    if post_to_reddit(cand) and _live():
+        # Only persist state after a REAL live post; dry-runs must not burn
+        # the 28-day per-sub cadence budget.
         state.setdefault("last_post_per_sub", {})[cand["subreddit"]] = \
             datetime.now(timezone.utc).isoformat()
         posted = state.setdefault("posted_hashes", [])
