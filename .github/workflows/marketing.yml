@@ -51,6 +51,13 @@ jobs:
           REDDIT_USER_AGENT: ${{ secrets.REDDIT_USER_AGENT }}
         run: python scripts/reddit_post.py
 
+      - name: Bluesky auto-post (dormant until secrets set; own cap+dedup)
+        continue-on-error: true   # never break the X pipeline
+        env:
+          BLUESKY_HANDLE: ${{ secrets.BLUESKY_HANDLE }}
+          BLUESKY_APP_PASSWORD: ${{ secrets.BLUESKY_APP_PASSWORD }}
+        run: python scripts/bluesky.py
+
       - name: Commit to main
         run: |
           git config user.name "Massor"
