@@ -105,12 +105,13 @@ CURATED_POSTS = [
 ]
 
 # ── Tweet templates (rotated for variety) ──
+# NB: the {hashtags} placeholder receives an already-hash-prefixed string
+# ("#tag1 #tag2 #tag3"), so templates do NOT prefix another '#' before it.
 TWEET_TEMPLATES = [
-    "{emoji} {name} — {tagline}\n\n👉 {url}\n\n#{hashtags}",
-    "{emoji} 推薦給大家！{name}\n{tagline}\n\n{url}\n#{hashtags}",
-    "{emoji} 試試這個：{name}\n\"{tagline}\"\n\n👇 了解更多\n{url}\n#{hashtags}",
-    "{emoji} {name}\n✅ {benefit1}\n✅ {benefit2}\n✅ {benefit3}\n\n👉 {url}\n#{hashtags}",
-    "{emoji} 你還在{problem}嗎？\n{name} 可以幫你{solution}！\n\n{url}\n#{hashtags}",
+    "{emoji} {name} — {tagline}\n\n👉 {url}\n\n{hashtags}",
+    "{emoji} 推薦給大家！{name}\n{tagline}\n\n{url}\n{hashtags}",
+    "{emoji} 試試這個：{name}\n\"{tagline}\"\n\n👇 了解更多\n{url}\n{hashtags}",
+    "{emoji} 你還在{problem}嗎？\n{name} 可以幫你{solution}！\n\n{url}\n{hashtags}",
 ]
 
 PROBLEMS = {
@@ -189,15 +190,16 @@ def build_tweet(product_key: str) -> str:
     problems = PROBLEMS.get(product_key, [""])
     solutions = SOLUTIONS.get(product_key, [""])
 
+    # Turn ["tag1","tag2"] into "#tag1 #tag2" — must be done here, not in the
+    # template, or the join yields "#tag1 tag2" (bug 2026-07 fix).
+    hashtags = " ".join("#" + h.lstrip("#") for h in p["hashtags"])
+
     text = tmpl.format(
         emoji=emoji,
         name=p["name"],
         tagline=p["tagline"],
         url=p["url"],
-        hashtags=" ".join(p["hashtags"]),
-        benefit1=p.get("benefits", [""])[0] if p.get("benefits") else "",
-        benefit2=p.get("benefits", [""])[1] if len(p.get("benefits", [])) > 1 else "",
-        benefit3=p.get("benefits", [""])[2] if len(p.get("benefits", [])) > 2 else "",
+        hashtags=hashtags,
         problem=random.choice(problems),
         solution=random.choice(solutions),
     )
