@@ -54,6 +54,19 @@ CURATED_POSTS = [
     "github's free tier. taiwan-stock scanner, etf dashboard, daily shorts bot, "
     "20+ browser tools. all open source.\n"
     "https://github.com/slashman413",
+
+    # Paid CTA, dev-native tone
+    "want to ship a SaaS this weekend?\n"
+    "SaaS Starter Kit — Next.js 15 + Prisma + Auth.js + Stripe, one-click "
+    "Vercel deploy. multi-tenant, RBAC, subs, all built in.\n"
+    "https://slashmaster6.gumroad.com/l/kuvajr",
+
+    # Paid CTA, honest tone
+    "if you trade Taiwan stocks — the scanner is $49/mo (email alerts + "
+    "real-time signals). free delayed version if you just want to see how "
+    "it works.\n"
+    "delayed: slashmantools.us/twse-surge-stocks-dna/\n"
+    "paid: ko-fi.com/s/b99720d13d",
 ]
 
 PDS = "https://bsky.social"

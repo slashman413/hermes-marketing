@@ -70,6 +70,20 @@ CURATED_POSTS = [
      "Source: https://github.com/slashman413\n"
      "Tools: https://slashmantools.us\n\n"
      "#buildinpublic #indiehackers #sideproject"),
+
+    # Paid CTA — SaaS Starter Kit fits the LinkedIn dev-professional audience.
+    ("If your side-project momentum keeps dying in the auth-and-billing setup, I packaged "
+     "the boilerplate I use for my own SaaS work as a starter kit.\n\n"
+     "SaaS Starter Kit — Next.js 15, TypeScript, Prisma, Auth.js (email + OAuth), "
+     "Stripe webhooks, multi-tenant org/RBAC model. One-click Vercel deploy: it "
+     "provisions a Neon Postgres, runs migrations, and seeds a demo login for you. "
+     "Sign in as `owner@acme.test` and start extending.\n\n"
+     "For anyone who wants the plumbing out of the way so they can focus on the "
+     "product:\n"
+     "https://slashmaster6.gumroad.com/l/kuvajr\n\n"
+     "Source is on GitHub if you want to look before you buy: "
+     "https://github.com/slashman413/saas-starter\n\n"
+     "#SaaS #NextJS #buildinpublic #indiehackers"),
 ]
 
 
