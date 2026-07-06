@@ -23,8 +23,8 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Install tweepy
-        run: pip install tweepy
+      - name: Install dependencies
+        run: pip install tweepy requests
 
       - name: Generate & post marketing content
         env:
@@ -33,6 +33,13 @@ jobs:
           X_ACCESS_TOKEN: ${{ secrets.X_ACCESS_TOKEN }}
           X_ACCESS_TOKEN_SECRET: ${{ secrets.X_ACCESS_TOKEN_SECRET }}
         run: python scripts/marketing.py all
+
+      - name: LinkedIn auto-post (dormant until secrets set; own cadence gate)
+        continue-on-error: true   # never break the X pipeline
+        env:
+          LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
+          LINKEDIN_ACTOR_URN: ${{ secrets.LINKEDIN_ACTOR_URN }}
+        run: python scripts/linkedin.py
 
       - name: Commit to main
         run: |
