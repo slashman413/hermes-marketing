@@ -7,6 +7,11 @@ you add their credentials.
 Enable a channel by adding its GitHub Secrets (Settings → Secrets and variables
 → Actions). Skip any channel you don't want — they no-op cleanly without creds.
 
+**Fast path**: `./scripts/setup_secrets.sh bluesky|linkedin|reddit|meta` runs
+an interactive prompt that sets all secrets for one channel via `gh` CLI
+(requires `gh auth login`). Turns the "click 6 fields in the GitHub UI"
+workflow into a 2-minute paste job.
+
 ## Channels at a glance
 
 | Channel | Status | Script | Setup doc | Cadence | Ban-risk |
