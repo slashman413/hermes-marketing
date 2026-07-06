@@ -102,6 +102,21 @@ CURATED_POSTS = [
     "• Ko-fi = checkout\n"
     "All open source 👇\nhttps://github.com/slashman413\n"
     "#buildinpublic #indiehackers",
+
+    "想這週末就上線一個 SaaS？\n"
+    "SaaS Starter Kit：Next.js 15 + Prisma + Auth.js + Stripe，一鍵 Vercel 部署。多租戶／RBAC／訂閱都內建。\n"
+    "👉 https://slashmaster6.gumroad.com/l/kuvajr\n"
+    "#SaaS #buildinpublic #NextJS",
+
+    "Amazon 特價每天都有，但你抓得到嗎？\n"
+    "Deal Finder Pro：每天自動掃描熱門類別，命中你的關鍵字就 Email 通知，$19/月。\n"
+    "👉 https://ko-fi.com/s/5730f8f947\n"
+    "#AmazonDeals #省錢 #自動化",
+
+    "想經營 SEO 部落格，但寫不動每天更新？\n"
+    "SEO Content Engine 自動幫你產出 SEO 文章＋免費 GitHub Pages 託管，$19/月。\n"
+    "👉 https://ko-fi.com/s/a03f0a8e3b\n"
+    "#SEO #ContentMarketing #GitHubPages",
 ]
 
 # ── Tweet templates (rotated for variety) ──
