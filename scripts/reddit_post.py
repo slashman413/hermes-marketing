@@ -147,6 +147,8 @@ def post_to_reddit(cand: dict) -> bool:
         return True
     except Exception as e:
         log.warning(f"FAILED to post to r/{cand['subreddit']}: {e}")
+        from _discord import notify
+        notify(f"🔴 Reddit auto-post FAILED (r/{cand['subreddit']}): {str(e)[:300]}")
         return False
 
 

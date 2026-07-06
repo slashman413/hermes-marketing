@@ -150,6 +150,9 @@ def post_to_linkedin(text: str) -> bool:
         log.info(f"posted (status {r.status_code}, id={r.headers.get('x-restli-id')})")
     else:
         log.warning(f"FAILED (status {r.status_code}): {r.text[:300]}")
+        from _discord import notify
+        hint = " (token likely expired — LinkedIn access tokens last ~60d)" if r.status_code == 401 else ""
+        notify(f"🔴 LinkedIn auto-post FAILED (HTTP {r.status_code}){hint}\n```{r.text[:300]}```")
     return ok
 
 

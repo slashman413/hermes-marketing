@@ -39,6 +39,7 @@ jobs:
         env:
           LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
           LINKEDIN_ACTOR_URN: ${{ secrets.LINKEDIN_ACTOR_URN }}
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         run: python scripts/linkedin.py
 
       - name: Reddit auto-post (dormant until secrets set; monthly per-sub gate)
@@ -49,6 +50,7 @@ jobs:
           REDDIT_USERNAME: ${{ secrets.REDDIT_USERNAME }}
           REDDIT_PASSWORD: ${{ secrets.REDDIT_PASSWORD }}
           REDDIT_USER_AGENT: ${{ secrets.REDDIT_USER_AGENT }}
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         run: python scripts/reddit_post.py
 
       - name: Bluesky auto-post (dormant until secrets set; own cap+dedup)
@@ -56,6 +58,7 @@ jobs:
         env:
           BLUESKY_HANDLE: ${{ secrets.BLUESKY_HANDLE }}
           BLUESKY_APP_PASSWORD: ${{ secrets.BLUESKY_APP_PASSWORD }}
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         run: python scripts/bluesky.py
 
       - name: Commit to main

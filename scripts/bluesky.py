@@ -116,6 +116,9 @@ def post_to_bluesky(text: str) -> bool:
                           json={"identifier": handle, "password": app_pw}, timeout=30)
         if s.status_code != 200:
             log.warning(f"createSession failed {s.status_code}: {s.text[:200]}")
+            from _discord import notify
+            hint = " (Bluesky app password may have been revoked)" if s.status_code == 401 else ""
+            notify(f"🔴 Bluesky auth FAILED (HTTP {s.status_code}){hint}\n```{s.text[:300]}```")
             return False
         sess = s.json()
         record = {
@@ -134,6 +137,9 @@ def post_to_bluesky(text: str) -> bool:
         )
         ok = r.status_code == 200 and "uri" in r.json()
         log.info(f"{'posted' if ok else 'FAILED'} ({r.status_code}) {r.json().get('uri','')}")
+        if not ok:
+            from _discord import notify
+            notify(f"🔴 Bluesky createRecord FAILED (HTTP {r.status_code})\n```{r.text[:300]}```")
         return ok
     except Exception as e:
         log.warning(f"error: {e}")
