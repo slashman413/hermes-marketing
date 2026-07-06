@@ -1,0 +1,51 @@
+name: Preview auto-posts
+
+# One-click health check: shows exactly what X / LinkedIn / Reddit / Bluesky
+# would post right now, in dry-run. No credentials used, nothing published,
+# nothing committed. Useful for verifying wiring after any change or before
+# activating a channel's real tokens.
+#
+# Trigger: Actions tab → "Preview auto-posts" → Run workflow.
+
+on:
+  workflow_dispatch:
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies (same as marketing workflow)
+        run: pip install tweepy requests praw
+      - name: Run preview
+        id: run
+        run: |
+          {
+            echo "## Auto-post preview — $(date -u +'%Y-%m-%d %H:%M UTC')"
+            echo ""
+            echo '```text'
+            python scripts/preview_all.py
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: URL health check
+        run: |
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "## URL health (all URLs referenced in promo content)" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          # Extract distinct http(s) URLs from all promo scripts.
+          urls=$(grep -Ehoi 'https?://[A-Za-z0-9./?=_%:&#+~-]+' scripts/*.py | sort -u | grep -viE 'schemas\.|w3\.org|linkedin\.com/v2/|api\.linkedin\.com|graph\.facebook\.com|graph\.threads\.net|bsky\.social/xrpc|reddit\.com/prefs|raw\.githubusercontent')
+          for u in $urls; do
+            u_clean=$(printf '%s' "$u" | sed -E 's/[.,)]+$//')
+            code=$(curl -sSL -o /dev/null -w "%{http_code}" --max-time 15 -A "Mozilla/5.0 hermes-preview" "$u_clean" 2>/dev/null || echo 000)
+            case "$code" in
+              200|301|302|307|308) mark="✅" ;;
+              403) mark="🟡 (403 — likely bot-block, e.g. Cloudflare)" ;;
+              *) mark="❌" ;;
+            esac
+            echo "- \`$code\` $mark $u_clean" >> "$GITHUB_STEP_SUMMARY"
+          done
