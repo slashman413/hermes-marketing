@@ -15,7 +15,7 @@ Enable a channel by adding its GitHub Secrets (Settings → Secrets and variable
 | LinkedIn           | 🔧 Dormant | `scripts/linkedin.py`   | [linkedin_autopost_setup.md](linkedin_autopost_setup.md)  | ~2×/week, 3-day gate      | Low |
 | Reddit             | 🔧 Dormant | `scripts/reddit_post.py`| [reddit_autopost_setup.md](reddit_autopost_setup.md)      | ~1×/month per subreddit   | **Medium** (r/SideProject only by default) |
 | Bluesky            | 🔧 Dormant | `scripts/bluesky.py`    | [bluesky_autopost_setup.md](bluesky_autopost_setup.md)    | 2×/day cap, jittered      | Low |
-| Facebook Page      | 🔧 Dormant | `slashman413.github.io/social_promo.py` | [meta_autopost_setup.md](../../slashman413.github.io/docs/meta_autopost_setup.md) | 2×/day       | Low (Graph API) |
+| Facebook Page      | 🔧 Dormant | `slashman413.github.io/social_promo.py` | [meta_autopost_setup.md](https://github.com/slashman413/slashman413.github.io/blob/main/docs/meta_autopost_setup.md) | 2×/day       | Low (Graph API) |
 | Instagram          | 🔧 Dormant | same as above           | same as above                                             | 2×/day                    | Low |
 | Threads            | 🔧 Dormant | same as above           | same as above                                             | 2×/day                    | Low |
 
@@ -43,7 +43,7 @@ Marketing → *Run workflow*) and check the Action log before moving on.
 ### 3. Meta — Facebook + Instagram + Threads (~30 minutes, most setup)
 
 1. https://developers.facebook.com/apps → Create app (Business type)
-2. Follow the [full guide](../../slashman413.github.io/docs/meta_autopost_setup.md) for
+2. Follow the [full guide](https://github.com/slashman413/slashman413.github.io/blob/main/docs/meta_autopost_setup.md) for
    `FB_PAGE_*`, `IG_USER_ID`, `IG_GRAPH_TOKEN`, `THREADS_USER_ID`, `THREADS_TOKEN`
 3. **Test in dry-run first**: set `META_AUTOPOST=dry` and run the workflow.
    The log will show `[fb:dry]` `[ig:dry]` `[threads:dry]` lines — verify the
