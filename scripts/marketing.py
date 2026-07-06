@@ -210,8 +210,10 @@ def build_tweet(product_key: str) -> str:
     return text
 
 
-def post_to_x(text: str):
-    """Post tweet to X/Twitter if credentials available, else dry-run."""
+def post_to_x(text: str) -> bool:
+    """Post tweet to X/Twitter if credentials available, else dry-run.
+    Returns True only when a real post was attempted (regardless of API outcome).
+    Dry-run returns False so callers don't burn the daily cap on empty-creds runs."""
     api_key = os.environ.get("X_API_KEY", "")
     api_secret = os.environ.get("X_API_SECRET", "")
     access_token = os.environ.get("X_ACCESS_TOKEN", "")
@@ -221,7 +223,7 @@ def post_to_x(text: str):
 
     if not has_creds:
         log.info(f"🐦 [DRY-RUN] Would tweet:\n{text}\n")
-        return
+        return False
 
     try:
         import tweepy
@@ -235,6 +237,9 @@ def post_to_x(text: str):
     except Exception as e:
         log.warning(f"❌ Tweet failed: {e}")
         log.info(f"   Text was: {text[:100]}...")
+    # API failure still counts as "attempted": record the hash so we don't
+    # immediately retry the exact same text; the tweet_count reflects attempts.
+    return True
 
 
 def generate_html(promoted: list[str]) -> str:
@@ -308,9 +313,12 @@ def main():
             if tweet is None:
                 log.info("⏸ No non-duplicate tweet available; skipping.")
                 break
-            post_to_x(tweet)
-            record_posted(log_data, tweet)
-            log_data["tweet_count"] = log_data.get("tweet_count", 0) + 1
+            # Only bump counters when a real post was attempted (creds present).
+            # Otherwise a dry-run (missing X_* secrets) would silently exhaust
+            # the daily cap and blocked live posts after tokens were restored.
+            if post_to_x(tweet):
+                record_posted(log_data, tweet)
+                log_data["tweet_count"] = log_data.get("tweet_count", 0) + 1
             if i < want - 1:
                 time.sleep(random.randint(*POST_SPACING_SEC))
 
