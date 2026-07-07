@@ -39,6 +39,7 @@ All Ko-fi links verified live 2026-07-07 (direct fetch 403s are Cloudflare bot-b
 1. **`GENTLE10` coupon** — advertised in `hermes-pay/docs/index.html` (lines 70, 103) and `pixabay-shorts-bot/src/main.py` (309-310, auto-posted to every YouTube description). The copy is also self-contradictory: one place says "10% off", another "首月 $9.99" (~66% off), and the Ko-fi checkout shows a flat $29 with no coupon field. **If the code exists on Ko-fi → reconcile the copy to one consistent offer. If not → remove the $9.99/GENTLE10 claims.** Not auto-touched (could be a real active promo).
 2. **Ko-fi links** — eyeball once in a browser (can't be automated-checked past Cloudflare).
 3. **X account handle** — confirm via a "Daily Marketing" Actions run log (whichever account owns the `X_API_*` secrets).
+4. **`ai-tech-news-vid-2ppl` is undeployed** — a $39 product ("YouTube channel in a box") with a finished landing page that 404s on both slashmantools.us and github.io. It can't be promoted or sold until deployed (enable GitHub Pages / set the CNAME path). Left out of rotations deliberately — promoting a dead URL is worse than silence.
 
 ## Token expiry reminders
 
