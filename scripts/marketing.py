@@ -383,10 +383,13 @@ def main():
             # Only bump counters when a real post was attempted (creds present).
             # Otherwise a dry-run (missing X_* secrets) would silently exhaust
             # the daily cap and blocked live posts after tokens were restored.
-            if post_to_x(tweet):
+            posted = post_to_x(tweet)
+            if posted:
                 record_posted(log_data, tweet)
                 log_data["tweet_count"] = log_data.get("tweet_count", 0) + 1
-            if i < want - 1:
+            # Jittered anti-spam spacing only matters between REAL posts; skip it
+            # in dry-run (no creds) so manual/CI dry-runs don't idle 25-90s.
+            if posted and i < want - 1:
                 time.sleep(random.randint(*POST_SPACING_SEC))
 
     if cmd in ("seo", "all"):
