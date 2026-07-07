@@ -1,0 +1,27 @@
+name: Tests
+
+# Regression tests for the auto-post scripts. Runs on every push touching the
+# scripts, plus manually. Intentionally separate from the Daily Marketing cron
+# so a test failure never blocks live posting — it's a signal, not a gate.
+
+on:
+  push:
+    paths:
+      - "scripts/**"
+      - "tests/**"
+      - ".github/workflows/tests.yml"
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      # No pip installs needed — the suite is zero-dependency by design and
+      # runs entirely on dry-run paths (no network, no credentials).
+      - name: Run regression tests
+        run: python tests/test_autopost.py
