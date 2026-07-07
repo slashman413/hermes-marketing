@@ -52,6 +52,14 @@ PRODUCTS = {
         "ko-fi": True,
         "hashtags": ["SEO", "ContentMarketing", "GitHubPages"],
     },
+    "saas_starter": {
+        "name": "SaaS Starter",
+        "tagline": "Ship a multi-tenant B2B SaaS this weekend — Next.js 15 + Prisma + Auth.js, RBAC, billing, API keys",
+        "url": "https://slashmaster6.gumroad.com/l/kuvajr?utm_source=twitter&utm_medium=social&utm_campaign=hermes-marketing",
+        "price": "$99",
+        "ko-fi": False,
+        "hashtags": ["nextjs", "SaaS", "buildinpublic"],
+    },
     "tools": {
         "name": "免費工具集",
         "tagline": "計算機+PDF+QR碼+圖片壓縮 20+免費線上工具",
@@ -117,6 +125,22 @@ CURATED_POSTS = [
     "SEO Content Engine 自動幫你產出 SEO 文章＋免費 GitHub Pages 託管，$19/月。\n"
     "👉 https://ko-fi.com/s/a03f0a8e3b\n"
     "#SEO #ContentMarketing #GitHubPages",
+    "I kept losing the first week of every SaaS to the same plumbing — auth, orgs, "
+    "roles, billing, API keys.\nSo I built it once, done right, and shipped it.\n"
+    "Free Lite (auth+multi-tenancy+RBAC): https://github.com/slashman413/saas-starter-lite\n"
+    "Full — $99: https://slashmaster6.gumroad.com/l/kuvajr?utm_source=twitter&utm_medium=social&utm_campaign=hermes-marketing\n"
+    "#nextjs #SaaS #buildinpublic",
+
+    "The part most SaaS boilerplates fake: real multi-tenancy.\n"
+    "In SaaS Starter every query is scoped by organizationId — one org can never "
+    "read another's data.\nRead the code free (Lite): "
+    "https://github.com/slashman413/saas-starter-lite\n#nextjs #Prisma #SaaS",
+
+    "SaaS Starter — a Next.js 15 boilerplate where billing isn't a lie:\n"
+    "the Stripe webhook is signature-verified, API keys are SHA-256-hashed, "
+    "audit logs are per-org.\n$99, lifetime updates 👉 "
+    "https://slashmaster6.gumroad.com/l/kuvajr?utm_source=twitter&utm_medium=social&utm_campaign=hermes-marketing\n"
+    "#buildinpublic #indiehackers",
 ]
 
 # ── Tweet templates (rotated for variety) ──
@@ -130,6 +154,7 @@ TWEET_TEMPLATES = [
 ]
 
 PROBLEMS = {
+    "saas_starter": ["rebuilding auth/orgs/RBAC on every project", "losing a week to SaaS plumbing"],
     "shortsgen": ["手動剪輯影片很花時間", "每天為內容發想煩惱"],
     "twse": ["錯過台股買賣點", "沒時間盯盤"],
     "dealfinder": ["錯過Amazon好康", "每天手動比價很累"],
@@ -139,6 +164,7 @@ PROBLEMS = {
 }
 
 SOLUTIONS = {
+    "saas_starter": ["start from a production-ready multi-tenant foundation", "ship the product, not the plumbing"],
     "shortsgen": ["自動化產出，每天2支Shorts", "AI幫你選名言+配樂"],
     "twse": ["自動掃描所有上市股票", "Email即時通知訊號"],
     "dealfinder": ["自動比價+通知", "再也不錯過特價"],
@@ -148,8 +174,8 @@ SOLUTIONS = {
 }
 
 EMOJIS = {
-    "shortsgen": "🎬🚀⚡", "twse": "📊💰📈", "dealfinder": "🛒🔥💎",
-    "seo": "📝🚀🔍", "tools": "🔧🛠️⚙️", "youtube": "💭✨🌿",
+    "saas_starter": "🛠🚀🧱", "shortsgen": "🎬🚀⚡", "twse": "📊💰📈",
+    "dealfinder": "🛒🔥💎", "seo": "📝🚀🔍", "tools": "🔧🛠️⚙️", "youtube": "💭✨🌿",
 }
 
 
