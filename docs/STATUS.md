@@ -34,12 +34,18 @@ when creds absent, Discord failure alerts, and per-channel UTM attribution.
 ShortsGen $29 · TWSE Premium $49 · Deal Finder **$9** · SEO Content Engine $19/mo · SaaS Starter $99 (Gumroad).
 All Ko-fi links verified live 2026-07-07 (direct fetch 403s are Cloudflare bot-block, not dead links).
 
+## Resolved
+
+- ~~`GENTLE10` coupon~~ — **RESOLVED 2026-07-07**: removed the false/contradictory "$9.99 / GENTLE10" promo from all 4 spots; now honest flat $29, no code (commits d185e3e, b5c2686).
+- ~~Ko-fi links~~ — **VERIFIED LIVE 2026-07-07**: all 4 (ShortsGen/TWSE/Deal Finder/SEO) resolve with working "Buy now" buttons on the ytstories0413 shop. (Direct fetches 403 on Cloudflare; confirmed via reader proxy.)
+
 ## Open decisions (need you)
 
-1. **`GENTLE10` coupon** — advertised in `hermes-pay/docs/index.html` (lines 70, 103) and `pixabay-shorts-bot/src/main.py` (309-310, auto-posted to every YouTube description). The copy is also self-contradictory: one place says "10% off", another "首月 $9.99" (~66% off), and the Ko-fi checkout shows a flat $29 with no coupon field. **If the code exists on Ko-fi → reconcile the copy to one consistent offer. If not → remove the $9.99/GENTLE10 claims.** Not auto-touched (could be a real active promo).
-2. **Ko-fi links** — eyeball once in a browser (can't be automated-checked past Cloudflare).
-3. **X account handle** — confirm via a "Daily Marketing" Actions run log (whichever account owns the `X_API_*` secrets).
-4. **`ai-tech-news-vid-2ppl` is undeployed** — a $39 product ("YouTube channel in a box") with a finished landing page that 404s on both slashmantools.us and github.io. It can't be promoted or sold until deployed (enable GitHub Pages / set the CNAME path). Left out of rotations deliberately — promoting a dead URL is worse than silence.
+1. **Activate channels** — `./scripts/setup_secrets.sh bluesky` (5 min, lowest risk) → run Preflight → done. Then work down `AUTOPOST_MASTER_SETUP.md`.
+2. **X account handle** — confirm via a "Daily Marketing" Actions run log (whichever account owns the `X_API_*` secrets). Can't be read from code.
+3. **`ai-tech-news-vid-2ppl` — deploy is blocked on TWO things (investigated 2026-07-07):**
+   - **No checkout.** The landing's Buy buttons point to `slashmaster6.gumroad.com` (store homepage), not a product page — there's no dedicated $39 Gumroad product (kuvajr is SaaS Starter). Deploying now = a live sales page you can't buy from. → Create the Gumroad product, send me the URL, I wire the Buy button.
+   - **Pages not enabled.** Siblings serve via "Deploy from branch" (a repo Settings toggle needing API access I don't have). → Toggle Settings → Pages → source = `main /docs`, OR I add a GitHub Actions deploy workflow — but only after the checkout is fixed (won't publish a broken funnel).
 
 ## Token expiry reminders
 
