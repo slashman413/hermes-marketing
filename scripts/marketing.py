@@ -40,7 +40,7 @@ PRODUCTS = {
         "name": "Deal Finder Pro",
         "tagline": "每日Amazon特價自動通知 — 省錢就該自動化",
         "url": "https://ko-fi.com/s/5730f8f947",
-        "price": "$19/mo",
+        "price": "$9",  # matches the live Ko-fi listing — do not advertise a higher price
         "ko-fi": True,
         "hashtags": ["AmazonDeals", "省錢", "DealFinder"],
     },
@@ -117,7 +117,7 @@ CURATED_POSTS = [
     "#SaaS #buildinpublic #NextJS",
 
     "Amazon 特價每天都有，但你抓得到嗎？\n"
-    "Deal Finder Pro：每天自動掃描熱門類別，命中你的關鍵字就 Email 通知，$19/月。\n"
+    "Deal Finder Pro：每天自動掃描熱門類別，命中你的關鍵字就 Email 通知，只要 $9。\n"
     "👉 https://ko-fi.com/s/5730f8f947\n"
     "#AmazonDeals #省錢 #自動化",
 

@@ -14,7 +14,7 @@ Links reference:
 - Surge Stocks DNA: https://slashmantools.us/twse-surge-stocks-dna/
 - ShortsGen Pro ($29/mo): https://ko-fi.com/s/896aa3c229
 - TWSE Premium ($49/mo): https://ko-fi.com/s/b99720d13d
-- Deal Finder Pro ($19/mo): https://ko-fi.com/s/5730f8f947
+- Deal Finder Pro ($9): https://ko-fi.com/s/5730f8f947
 - SEO Content Engine ($19/mo): https://ko-fi.com/s/a03f0a8e3b
 - YouTube (Gentle Soul): https://www.youtube.com/@GentleSoul666
 
