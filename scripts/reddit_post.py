@@ -139,9 +139,15 @@ def post_to_reddit(cand: dict) -> bool:
         log.warning("praw not installed; skipping.")
         return False
     try:
+        body = cand["body"]
+        try:
+            from _utm import tag as _utm_tag
+            body = _utm_tag(body, "reddit")
+        except Exception:
+            pass
         r = praw.Reddit(**creds)
         submission = r.subreddit(cand["subreddit"]).submit(
-            title=cand["title"], selftext=cand["body"], send_replies=True,
+            title=cand["title"], selftext=body, send_replies=True,
         )
         log.info(f"posted to r/{cand['subreddit']}: {submission.shortlink}")
         return True

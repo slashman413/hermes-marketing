@@ -260,6 +260,14 @@ def post_to_x(text: str) -> bool:
     access_token = os.environ.get("X_ACCESS_TOKEN", "")
     access_secret = os.environ.get("X_ACCESS_TOKEN_SECRET", "")
 
+    # Attribution: tag slashmantools.us links so GA can credit X for the traffic.
+    # (URLs are t.co-wrapped to 23 chars on X, so this never affects tweet length.)
+    try:
+        from _utm import tag as _utm_tag
+        text = _utm_tag(text, "x")
+    except Exception:
+        pass  # never let attribution tagging block a post
+
     has_creds = all([api_key, api_secret, access_token, access_secret])
 
     if not has_creds:

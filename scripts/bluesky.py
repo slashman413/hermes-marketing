@@ -92,9 +92,22 @@ def _save_state(state: dict):
     p.write_text(json.dumps(state, indent=2, ensure_ascii=False), encoding="utf-8")
 
 
+def _utm(text: str) -> str:
+    """Tag slashmantools.us links for GA attribution (source=bluesky)."""
+    try:
+        from _utm import tag
+        return tag(text, "bluesky")
+    except Exception:
+        return text
+
+
 def _pick_fresh(state: dict) -> str | None:
+    # Filter on the TAGGED length: UTM params add chars, and Bluesky enforces
+    # a hard 300-grapheme limit (no t.co wrapping). Dedup still keys on the
+    # untagged text so attribution never changes a post's identity.
     posted = state.setdefault("posted_hashes", [])
-    fresh = [t for t in CURATED_POSTS if _hash(t) not in posted and len(t) <= CHAR_LIMIT]
+    fresh = [t for t in CURATED_POSTS
+             if _hash(t) not in posted and len(_utm(t)) <= CHAR_LIMIT]
     return random.choice(fresh) if fresh else None
 
 
@@ -119,6 +132,7 @@ def post_to_bluesky(text: str) -> bool:
     if not (handle and app_pw):
         log.info("DRY-RUN (no BLUESKY_HANDLE / BLUESKY_APP_PASSWORD):\n" + text[:200])
         return True
+    text = _utm(text)  # attribution — tag before building the record/facet
     try:
         import requests
     except ImportError:

@@ -133,6 +133,11 @@ def _live() -> bool:
 
 def post_to_linkedin(text: str) -> bool:
     """Post via the official v2 UGC Posts API. Dry-run if tokens missing."""
+    try:
+        from _utm import tag as _utm_tag
+        text = _utm_tag(text, "linkedin")
+    except Exception:
+        pass
     token = os.environ.get("LINKEDIN_ACCESS_TOKEN")
     actor = os.environ.get("LINKEDIN_ACTOR_URN")
     if not (token and actor):

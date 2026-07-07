@@ -170,12 +170,52 @@ def test_preflight(tmp):
     check("preflight: zero FAIL with no creds", len(fails) == 0, str(fails))
 
 
+# ── _utm.py attribution tagger ───────────────────────────────────────────────
+def test_utm(tmp):
+    print("_utm.py (attribution):")
+    u = load("_utm", tmp)
+    # slashmantools link gets tagged (with path)
+    out = u.tag("see https://slashmantools.us/pdf-tools/ now", "x")
+    check("slashmantools link tagged",
+          "utm_source=x" in out and "utm_medium=social" in out, out)
+    # bare hub link (no trailing path) also tagged
+    bare = u.tag("👉 https://slashmantools.us\n#x", "x")
+    check("bare hub link tagged",
+          "slashmantools.us?utm_source=x" in bare, bare)
+    # Ko-fi / github / youtube left untouched
+    for url in ("https://ko-fi.com/s/896aa3c229",
+                "https://github.com/slashman413",
+                "https://www.youtube.com/@GentleSoul666"):
+        check(f"non-slashmantools link untouched ({url[:30]})",
+              u.tag(f"x {url} y", "x") == f"x {url} y")
+    # idempotent: already-tagged link not double-tagged
+    once = u.tag("https://slashmantools.us/", "x")
+    check("idempotent (no double utm)", u.tag(once, "x").count("utm_source") == 1)
+    # trailing punctuation preserved outside the query
+    tp = u.tag("visit https://slashmantools.us/. thanks", "x")
+    check("trailing punctuation stays outside URL", "campaign=hermes." in tp, tp)
+
+    # X: effective length still <= 280 after tagging (t.co wraps tagged URL to 23)
+    m = load("marketing", tmp)
+    _url = re.compile(r"https?://\S+")
+    def x_len(t):
+        return len(_url.sub("x" * 23, t))
+    over_x = [i for i, t in enumerate(m.CURATED_POSTS) if x_len(u.tag(t, "x")) > 280]
+    check("X posts <= 280 effective after UTM tagging", not over_x, str(over_x))
+
+    # Bluesky: tagged length <= 300 (hard limit, no t.co)
+    bs = load("bluesky", tmp)
+    over_bs = [i for i, t in enumerate(bs.CURATED_POSTS) if len(u.tag(t, "bluesky")) > 300]
+    check("Bluesky posts <= 300 after UTM tagging", not over_bs, str(over_bs))
+
+
 def main():
     with tempfile.TemporaryDirectory() as d:
         tmp = Path(d)
         test_marketing(tmp)
         test_dryrun_no_state(tmp)
         test_preflight(tmp)
+        test_utm(tmp)
     print(f"\n{_PASS} passed, {_FAIL} failed.")
     sys.exit(1 if _FAIL else 0)
 
