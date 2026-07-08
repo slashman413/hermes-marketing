@@ -140,15 +140,21 @@ def test_dryrun_no_state(tmp):
           not (tmp / "bs" / "docs" / "bluesky_state.json").exists())
     check("Bluesky _live() False without tokens", bs._live() is False)
     check("Bluesky posts <= 300 chars", all(len(t) <= 300 for t in bs.CURATED_POSTS))
-    # facet byte-offset correctness
+    # facet byte-offset correctness — EVERY url in EVERY post must map exactly
+    # (a post can have multiple links; all must be clickable, offsets exact).
+    all_ok = True
+    multi = 0
     for t in bs.CURATED_POSTS:
-        f = bs._extract_link_facet(t)
-        if f:
-            idx = f[0]["index"]
+        facets = bs._extract_link_facet(t) or []
+        if len(facets) > 1:
+            multi += 1
+        for f in facets:
+            idx = f["index"]
             got = t.encode("utf-8")[idx["byteStart"]:idx["byteEnd"]].decode("utf-8")
-            check(f"bluesky facet offsets exact ({got[:30]}...)",
-                  got == f[0]["features"][0]["uri"])
-            break
+            if got != f["features"][0]["uri"]:
+                all_ok = False
+    check("bluesky facet offsets exact for ALL urls in ALL posts", all_ok)
+    check("bluesky handles multi-link posts (>=1 post has 2+ facets)", multi >= 1)
 
 
 # ── preflight.py ─────────────────────────────────────────────────────────────

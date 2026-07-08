@@ -65,8 +65,8 @@ CURATED_POSTS = [
     "if you trade Taiwan stocks — the scanner is $49/mo (email alerts + "
     "real-time signals). free delayed version if you just want to see how "
     "it works.\n"
-    "delayed: slashmantools.us/twse-surge-stocks-dna/\n"
-    "paid: ko-fi.com/s/b99720d13d",
+    "free: https://slashmantools.us/twse-surge-stocks-dna/\n"
+    "paid: https://ko-fi.com/s/b99720d13d",
 
     # Paid CTA — newest product ($34 one-time), dev-native tone
     "a youtube channel that runs itself: scrapes tech news → AI writes a "
@@ -118,18 +118,20 @@ def _pick_fresh(state: dict) -> str | None:
 
 
 def _extract_link_facet(text: str):
-    """Return a facet linking the first http(s):// URL, so Bluesky renders it clickable."""
+    """Return facets for EVERY http(s):// URL so Bluesky renders each clickable.
+    (Bluesky does not auto-link bare text — links need explicit facets, and a
+    post can have more than one.)"""
     import re
-    m = re.search(r"https?://\S+", text)
-    if not m:
-        return None
-    b = text.encode("utf-8")
-    start = len(text[: m.start()].encode("utf-8"))
-    end   = len(text[: m.end()].encode("utf-8"))
-    return [{
-        "index": {"byteStart": start, "byteEnd": end},
-        "features": [{"$type": "app.bsky.richtext.facet#link", "uri": m.group(0)}],
-    }]
+    facets = []
+    for m in re.finditer(r"https?://[^\s]+", text):
+        url = m.group(0).rstrip(".,;!?)）。，、")  # don't fold trailing punctuation into the link
+        start = len(text[: m.start()].encode("utf-8"))
+        end = start + len(url.encode("utf-8"))
+        facets.append({
+            "index": {"byteStart": start, "byteEnd": end},
+            "features": [{"$type": "app.bsky.richtext.facet#link", "uri": url}],
+        })
+    return facets or None
 
 
 def post_to_bluesky(text: str) -> bool:
