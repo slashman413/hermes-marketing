@@ -12,10 +12,10 @@ _Single source of truth for the auto-post system's state. Skim this first._
 
 | Channel | State | Cadence | Notes |
 |---|---|---|---|
-| X / Twitter | ✅ **LIVE** | 3×/day, cap 6 | official API, dedup, jitter, curated pool |
+| Bluesky | ✅ **LIVE** (authenticated 2026-07-08) | 2×/day cap | first channel activated; preflight ✅ |
+| X / Twitter | ⚠️ **DRY-RUN ONLY — `X_API_*` secrets were NEVER set** | 3×/day, cap 6 | Discovered 2026-07-08 via preflight (SKIP) + tweet_count=0 since the dry-run fix. All prior "posts" were dry-runs; nothing has ever reached X. Create an app at developer.x.com (free tier, Read+Write), add the 4 secrets. |
 | LinkedIn | 🔧 dormant | ~2×/wk | needs `LINKEDIN_ACCESS_TOKEN`, `LINKEDIN_ACTOR_URN` |
 | Reddit (r/SideProject only) | 🔧 dormant | ~1×/mo per sub | needs `REDDIT_*` (5 secrets); account ≥30d old first |
-| Bluesky | 🔧 dormant | 2×/day cap | needs `BLUESKY_HANDLE`, `BLUESKY_APP_PASSWORD` |
 | Facebook / Instagram / Threads | 🔧 dormant | 2×/day | needs Meta app secrets + `META_AUTOPOST=1` (test `=dry` first). In `slashman413.github.io/social_promo.py`. |
 
 All dormant channels: official APIs only, verbatim dedup, cadence caps, dry-run
