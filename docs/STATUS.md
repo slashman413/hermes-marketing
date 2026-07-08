@@ -12,7 +12,7 @@ _Single source of truth for the auto-post system's state. Skim this first._
 
 | Channel | State | Cadence | Notes |
 |---|---|---|---|
-| Bluesky | ✅ **LIVE** (authenticated 2026-07-08) | 2×/day cap | first channel activated; preflight ✅ |
+| Bluesky | ✅ **LIVE & POSTING** | 2×/day cap | **first real posts confirmed 2026-07-08 08:00 UTC** (2/2: YouTube-channel + SaaS Starter, clickable links). First actual social posts of the whole project. |
 | X / Twitter | ⚠️ **DRY-RUN ONLY — `X_API_*` secrets were NEVER set** | 3×/day, cap 6 | Discovered 2026-07-08 via preflight (SKIP) + tweet_count=0 since the dry-run fix. All prior "posts" were dry-runs; nothing has ever reached X. Create an app at developer.x.com (free tier, Read+Write), add the 4 secrets. |
 | LinkedIn | 🔧 dormant | ~2×/wk | needs `LINKEDIN_ACCESS_TOKEN`, `LINKEDIN_ACTOR_URN` |
 | Reddit (r/SideProject only) | 🔧 dormant | ~1×/mo per sub | needs `REDDIT_*` (5 secrets); account ≥30d old first |
