@@ -125,6 +125,11 @@ CURATED_POSTS = [
     "SEO Content Engine 自動幫你產出 SEO 文章＋免費 GitHub Pages 託管，$19/月。\n"
     "👉 https://ko-fi.com/s/a03f0a8e3b\n"
     "#SEO #ContentMarketing #GitHubPages",
+
+    "想要一個會自己跑的 YouTube 頻道？\n"
+    "AI 科技新聞頻道系統：自動爬新聞 → AI 雙人對話腳本 → TTS 配音 → 合成影片 → 每天自動上傳。跑在 GitHub Actions，免伺服器，$34 一次買斷。\n"
+    "👉 https://slashmantools.us/ai-tech-news-vid-2ppl/\n"
+    "#YouTube自動化 #AI #SideHustle",
     "I kept losing the first week of every SaaS to the same plumbing — auth, orgs, "
     "roles, billing, API keys.\nSo I built it once, done right, and shipped it.\n"
     "Free Lite (auth+multi-tenancy+RBAC): https://github.com/slashman413/saas-starter-lite\n"
