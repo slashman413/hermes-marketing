@@ -55,7 +55,7 @@ PRODUCTS = {
     "saas_starter": {
         "name": "SaaS Starter",
         "tagline": "Ship a multi-tenant B2B SaaS this weekend — Next.js 15 + Prisma + Auth.js, RBAC, billing, API keys",
-        "url": "https://slashmaster6.gumroad.com/l/kuvajr?utm_source=twitter&utm_medium=social&utm_campaign=hermes-marketing",
+        "url": "https://slashmantools.us/saas/?utm_source=twitter&utm_medium=social&utm_campaign=hermes-marketing",
         "price": "$99",
         "ko-fi": False,
         "hashtags": ["nextjs", "SaaS", "buildinpublic"],
@@ -113,7 +113,7 @@ CURATED_POSTS = [
 
     "想這週末就上線一個 SaaS？\n"
     "SaaS Starter Kit：Next.js 15 + Prisma + Auth.js + Stripe，一鍵 Vercel 部署。多租戶／RBAC／訂閱都內建。\n"
-    "👉 https://slashmaster6.gumroad.com/l/kuvajr\n"
+    "👉 https://slashmantools.us/saas/\n"
     "#SaaS #buildinpublic #NextJS",
 
     "Amazon 特價每天都有，但你抓得到嗎？\n"
@@ -133,7 +133,7 @@ CURATED_POSTS = [
     "I kept losing the first week of every SaaS to the same plumbing — auth, orgs, "
     "roles, billing, API keys.\nSo I built it once, done right, and shipped it.\n"
     "Free Lite (auth+multi-tenancy+RBAC): https://github.com/slashman413/saas-starter-lite\n"
-    "Full — $99: https://slashmaster6.gumroad.com/l/kuvajr?utm_source=twitter&utm_medium=social&utm_campaign=hermes-marketing\n"
+    "Full — $99: https://slashmantools.us/saas/?utm_source=twitter&utm_medium=social&utm_campaign=hermes-marketing\n"
     "#nextjs #SaaS #buildinpublic",
 
     "The part most SaaS boilerplates fake: real multi-tenancy.\n"
@@ -144,7 +144,7 @@ CURATED_POSTS = [
     "SaaS Starter — a Next.js 15 boilerplate where billing isn't a lie:\n"
     "the Stripe webhook is signature-verified, API keys are SHA-256-hashed, "
     "audit logs are per-org.\n$99, lifetime updates 👉 "
-    "https://slashmaster6.gumroad.com/l/kuvajr?utm_source=twitter&utm_medium=social&utm_campaign=hermes-marketing\n"
+    "https://slashmantools.us/saas/?utm_source=twitter&utm_medium=social&utm_campaign=hermes-marketing\n"
     "#buildinpublic #indiehackers",
 ]
 
