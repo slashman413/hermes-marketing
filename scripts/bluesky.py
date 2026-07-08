@@ -67,6 +67,12 @@ CURATED_POSTS = [
     "it works.\n"
     "delayed: slashmantools.us/twse-surge-stocks-dna/\n"
     "paid: ko-fi.com/s/b99720d13d",
+
+    # Paid CTA — newest product ($34 one-time), dev-native tone
+    "a youtube channel that runs itself: scrapes tech news → AI writes a "
+    "2-host script → TTS voices → ffmpeg video → auto-uploads daily. "
+    "github actions, no server. $34 once.\n"
+    "https://slashmantools.us/ai-tech-news-vid-2ppl/",
 ]
 
 PDS = "https://bsky.social"
