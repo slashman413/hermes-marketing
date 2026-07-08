@@ -43,9 +43,7 @@ All Ko-fi links verified live 2026-07-07 (direct fetch 403s are Cloudflare bot-b
 
 1. **Activate channels** — `./scripts/setup_secrets.sh bluesky` (5 min, lowest risk) → run Preflight → done. Then work down `AUTOPOST_MASTER_SETUP.md`.
 2. **X account handle** — confirm via a "Daily Marketing" Actions run log (whichever account owns the `X_API_*` secrets). Can't be read from code.
-3. **`ai-tech-news-vid-2ppl` — deploy is blocked on TWO things (investigated 2026-07-07):**
-   - **No checkout.** The landing's Buy buttons point to `slashmaster6.gumroad.com` (store homepage), not a product page — there's no dedicated $39 Gumroad product (kuvajr is SaaS Starter). Deploying now = a live sales page you can't buy from. → Create the Gumroad product, send me the URL, I wire the Buy button.
-   - **Pages not enabled.** Siblings serve via "Deploy from branch" (a repo Settings toggle needing API access I don't have). → Toggle Settings → Pages → source = `main /docs`, OR I add a GitHub Actions deploy workflow — but only after the checkout is fixed (won't publish a broken funnel).
+3. ~~`ai-tech-news-vid-2ppl` deploy~~ — **LAUNCHED 2026-07-08** 🎉. User created the Gumroad product (`l/njserv`, $34). Buy buttons wired (+ landing price corrected $39→$34 to match checkout). The product repo turned out to be **private** (Pages can't publish on free plan), so the landing is served from the hub repo at `slashman413.github.io/ai-tech-news-vid-2ppl/` → live at slashmantools.us/ai-tech-news-vid-2ppl/ (verified 200, checkout 200). Added to Meta rotation (26 sites) + X curated pool. **Landing source of truth stays in the private repo's `docs/`; copy to the hub on change.**
 
 ## Token expiry reminders
 
