@@ -112,8 +112,15 @@ def _pick_fresh(state: dict) -> str | None:
     # a hard 300-grapheme limit (no t.co wrapping). Dedup still keys on the
     # untagged text so attribution never changes a post's identity.
     posted = state.setdefault("posted_hashes", [])
-    fresh = [t for t in CURATED_POSTS
-             if _hash(t) not in posted and len(_utm(t)) <= CHAR_LIMIT]
+    fits = [t for t in CURATED_POSTS if len(_utm(t)) <= CHAR_LIMIT]
+    fresh = [t for t in fits if _hash(t) not in posted]
+    if not fresh:
+        # Pool exhausted vs dedup history — cycle instead of going silent.
+        # Re-allow everything except the single most-recent post (no back-to-back
+        # repeat). Without this, once all posts are in posted_hashes the channel
+        # would stop posting permanently (pool size < DEDUP_HISTORY).
+        last = posted[-1] if posted else None
+        fresh = [t for t in fits if _hash(t) != last] or fits
     return random.choice(fresh) if fresh else None
 
 
