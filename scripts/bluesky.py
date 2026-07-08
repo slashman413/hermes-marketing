@@ -59,7 +59,7 @@ CURATED_POSTS = [
     "want to ship a SaaS this weekend?\n"
     "SaaS Starter Kit — Next.js 15 + Prisma + Auth.js + Stripe, one-click "
     "Vercel deploy. multi-tenant, RBAC, subs, all built in.\n"
-    "https://slashmaster6.gumroad.com/l/kuvajr",
+    "https://slashmantools.us/saas/",
 
     # Paid CTA, honest tone
     "if you trade Taiwan stocks — the scanner is $49/mo (email alerts + "
