@@ -80,9 +80,9 @@ CURATED_POSTS = [
      "Sign in as `owner@acme.test` and start extending.\n\n"
      "For anyone who wants the plumbing out of the way so they can focus on the "
      "product:\n"
-     "https://slashmaster6.gumroad.com/l/kuvajr\n\n"
+     "https://slashmantools.us/saas/\n\n"
      "Source is on GitHub if you want to look before you buy: "
-     "https://github.com/slashman413/saas-starter\n\n"
+     "https://github.com/slashman413/saas-starter-lite\n\n"
      "#SaaS #NextJS #buildinpublic #indiehackers"),
 ]
 
