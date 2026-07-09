@@ -1,0 +1,27 @@
+name: Seed Bluesky profile
+
+# One-time profile seeding: sets display name + bio, posts & pins a build-in-
+# public intro, then posts 4 value-first seed posts. Uses the existing
+# BLUESKY_* secrets. Idempotent — re-running detects the intro and does nothing.
+#
+# Trigger: Actions tab → "Seed Bluesky profile" → Run workflow.
+
+on:
+  workflow_dispatch:
+
+jobs:
+  seed:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        run: pip install requests
+      - name: Seed profile
+        env:
+          BLUESKY_HANDLE: ${{ secrets.BLUESKY_HANDLE }}
+          BLUESKY_APP_PASSWORD: ${{ secrets.BLUESKY_APP_PASSWORD }}
+        run: python scripts/bluesky_seed.py
