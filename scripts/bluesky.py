@@ -73,6 +73,30 @@ CURATED_POSTS = [
     "2-host script → TTS voices → ffmpeg video → auto-uploads daily. "
     "github actions, no server. $34 once.\n"
     "https://slashmantools.us/ai-tech-news-vid-2ppl/",
+
+    # Paid CTA — saas-starter, the multi-tenancy-pain angle
+    "the scariest bug in B2B SaaS: one tenant seeing another's data.\n"
+    "my starter kit resolves { org, role } on every request so you literally "
+    "can't forget to scope a query. Next.js 15 + Prisma + Auth.js.\n"
+    "https://slashmantools.us/saas/",
+
+    # Paid CTA — saas-starter, time-saved / build-in-public angle
+    "spent the weekend NOT rebuilding auth + orgs + roles + billing for the "
+    "5th time — because i finally packaged it once, properly.\n"
+    "free Lite to read the code, $99 for the full stack:\n"
+    "https://slashmantools.us/saas/",
+
+    # Paid CTA — TWSE, honest 'shows its work' angle (no performance claims)
+    "a taiwan-stock quant scanner that shows its work: the full historical "
+    "backtest is free to inspect, the daily signals are $49/mo. no black box, "
+    "decide for yourself.\n"
+    "https://slashmantools.us/hermes-twse-premium/",
+
+    # Paid CTA — ai-tech-news, faceless-channel trend angle
+    "everyone wants a faceless youtube channel. here's one that literally runs "
+    "itself on github actions: scrape tech news → script → voice → video → "
+    "upload. $34 once, no monthly, no server.\n"
+    "https://slashmantools.us/ai-tech-news-vid-2ppl/",
 ]
 
 PDS = "https://bsky.social"
