@@ -318,20 +318,20 @@ def generate_html(promoted: list[str]) -> str:
 <meta charset='UTF-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'>
 <title>hermes 生態系 — 工具與服務</title>
-<meta name='description' content='免費線上工具、YouTube自動化、台股訊號 — 全部開放原始碼'>
+<meta name='description' content='免費線上工具與開源專案，以及付費自動化服務（YouTube、台股訊號等）'>
 <link rel='canonical' href='{canonical}'>
 <!-- Open Graph (Facebook / LinkedIn / Discord / Slack) -->
 <meta property='og:type' content='website'>
 <meta property='og:site_name' content='slashman413'>
 <meta property='og:title' content='hermes 生態系 — 工具與服務'>
-<meta property='og:description' content='免費線上工具、YouTube 自動化、台股訊號 — 全部開放原始碼'>
+<meta property='og:description' content='免費線上工具與開源專案，以及付費自動化服務（YouTube、台股訊號等）'>
 <meta property='og:url' content='{canonical}'>
 <meta property='og:image' content='{og_image}'>
 <meta property='og:locale' content='zh_TW'>
 <!-- Twitter Card -->
 <meta name='twitter:card' content='summary_large_image'>
 <meta name='twitter:title' content='hermes 生態系 — 工具與服務'>
-<meta name='twitter:description' content='免費線上工具、YouTube 自動化、台股訊號 — 全部開放原始碼'>
+<meta name='twitter:description' content='免費線上工具與開源專案，以及付費自動化服務（YouTube、台股訊號等）'>
 <meta name='twitter:image' content='{og_image}'>
 <style>
 *{{margin:0;padding:0;box-sizing:border-box}}
@@ -355,7 +355,7 @@ footer{{text-align:center;padding:40px 0;color:#475569}}
 </head>
 <body>
 <h1>🌐 hermes 生態系</h1>
-<p class='subtitle'>所有工具與服務 — 免費使用・開放原始碼</p>
+<p class='subtitle'>免費工具與開源專案 · 部分為付費服務（見各卡片價格）</p>
 <div class='grid'>{cards}</div>
 <footer>
 hermes-marketing · 每日自動行銷推廣<br>
