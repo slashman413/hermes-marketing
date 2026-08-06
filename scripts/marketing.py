@@ -20,14 +20,6 @@ log = logging.getLogger(__name__)
 
 # ── Products with Ko-fi purchase links ──
 PRODUCTS = {
-    "shortsgen": {
-        "name": "ShortsGen Pro",
-        "tagline": "AI自動生成YouTube Shorts — 名言+音樂+自動上傳",
-        "url": "https://ko-fi.com/s/896aa3c229",
-        "price": "$29/mo",
-        "ko-fi": True,
-        "hashtags": ["YouTubeShorts", "AIContent", "ContentCreation"],
-    },
     "twse": {
         "name": "TWSE Premium",
         "tagline": "台股即時掃描訊號 — 每日Email通知買賣點",
@@ -55,7 +47,7 @@ PRODUCTS = {
     "saas_starter": {
         "name": "SaaS Starter",
         "tagline": "Ship a multi-tenant B2B SaaS this weekend — Next.js 15 + Prisma + Auth.js, RBAC, billing, API keys",
-        "url": "https://slashmantools.us/saas/?utm_source=twitter&utm_medium=social&utm_campaign=hermes-marketing",
+        "url": "https://slashmantools.us/saas/?utm_source=twitter&utm_medium=social&utm_campaign=hermes",
         "price": "$99",
         "ko-fi": False,
         "hashtags": ["nextjs", "SaaS", "buildinpublic"],
@@ -92,12 +84,6 @@ CURATED_POSTS = [
     "延遲版免費看：https://slashmantools.us/twse-surge-stocks-dna/\n"
     "即時版 $49/月 👉 https://ko-fi.com/s/b99720d13d\n#台股 #投資 #量化",
 
-    "My GitHub Actions bot makes 2 YouTube Shorts a day while I sleep — "
-    "quote + music + auto-upload, zero editing.\n"
-    "See it live: https://www.youtube.com/@GentleSoul666\n"
-    "Run it yourself ($29/mo): https://ko-fi.com/s/896aa3c229\n"
-    "#YouTubeShorts #AIContent #automation",
-
     "Guessing which Taiwan ETF to buy?\n"
     "Free dashboard: fundamentals + technicals for 0050 / 0056 / 00878, "
     "refreshed daily from a whole-market scan.\n"
@@ -127,13 +113,13 @@ CURATED_POSTS = [
     "#SEO #ContentMarketing #GitHubPages",
 
     "想要一個會自己跑的 YouTube 頻道？\n"
-    "AI 科技新聞頻道系統：自動爬新聞 → AI 雙人對話腳本 → TTS 配音 → 合成影片 → 每天自動上傳。跑在 GitHub Actions，免伺服器，$34 一次買斷。\n"
+    "AI 科技新聞頻道系統：自動爬新聞 → AI 雙人對話腳本 → TTS 配音 → 合成影片 → 每天自動上傳。跑在 GitHub Actions，免伺服器，$29 一次買斷。\n"
     "👉 https://slashmantools.us/ai-tech-news-vid-2ppl/\n"
     "#YouTube自動化 #AI #SideHustle",
     "I kept losing the first week of every SaaS to the same plumbing — auth, orgs, "
     "roles, billing, API keys.\nSo I built it once, done right, and shipped it.\n"
     "Free Lite (auth+multi-tenancy+RBAC): https://github.com/slashman413/saas-starter-lite\n"
-    "Full — $99: https://slashmantools.us/saas/?utm_source=twitter&utm_medium=social&utm_campaign=hermes-marketing\n"
+    "Full — $99: https://slashmantools.us/saas/?utm_source=twitter&utm_medium=social&utm_campaign=hermes\n"
     "#nextjs #SaaS #buildinpublic",
 
     "The part most SaaS boilerplates fake: real multi-tenancy.\n"
@@ -144,7 +130,7 @@ CURATED_POSTS = [
     "SaaS Starter — a Next.js 15 boilerplate where billing isn't a lie:\n"
     "the Stripe webhook is signature-verified, API keys are SHA-256-hashed, "
     "audit logs are per-org.\n$99, lifetime updates 👉 "
-    "https://slashmantools.us/saas/?utm_source=twitter&utm_medium=social&utm_campaign=hermes-marketing\n"
+    "https://slashmantools.us/saas/?utm_source=twitter&utm_medium=social&utm_campaign=hermes\n"
     "#buildinpublic #indiehackers",
 ]
 
@@ -160,7 +146,6 @@ TWEET_TEMPLATES = [
 
 PROBLEMS = {
     "saas_starter": ["rebuilding auth/orgs/RBAC on every project", "losing a week to SaaS plumbing"],
-    "shortsgen": ["手動剪輯影片很花時間", "每天為內容發想煩惱"],
     "twse": ["錯過台股買賣點", "沒時間盯盤"],
     "dealfinder": ["錯過Amazon好康", "每天手動比價很累"],
     "seo": ["寫文章SEO優化好難", "內容產出速度太慢"],
@@ -170,7 +155,6 @@ PROBLEMS = {
 
 SOLUTIONS = {
     "saas_starter": ["start from a production-ready multi-tenant foundation", "ship the product, not the plumbing"],
-    "shortsgen": ["自動化產出，每天2支Shorts", "AI幫你選名言+配樂"],
     "twse": ["自動掃描所有上市股票", "Email即時通知訊號"],
     "dealfinder": ["自動比價+通知", "再也不錯過特價"],
     "seo": ["自動生成SEO文章", "免費GitHub Pages託管"],
@@ -179,7 +163,7 @@ SOLUTIONS = {
 }
 
 EMOJIS = {
-    "saas_starter": "🛠🚀🧱", "shortsgen": "🎬🚀⚡", "twse": "📊💰📈",
+    "saas_starter": "🛠🚀🧱", "twse": "📊💰📈",
     "dealfinder": "🛒🔥💎", "seo": "📝🚀🔍", "tools": "🔧🛠️⚙️", "youtube": "💭✨🌿",
 }
 
