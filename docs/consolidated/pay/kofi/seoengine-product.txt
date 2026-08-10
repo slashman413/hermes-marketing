@@ -1,0 +1,14 @@
+# 📝 SEO Content Engine — Ko-fi Product Setup
+
+## Product Type: Membership (Subscription)
+
+### Pro — $19/month
+**Name:** SEO Content Engine
+**Price:** $19/month
+**Description:**
+AI-powered SEO content generator — rank higher on Google automatically.
+✓ 5 SEO articles/day (1500+ words each)
+✓ Google-friendly SEO structure
+✓ 10+ niches (Finance, Tech, Psychology, Health...)
+✓ Auto-publish to GitHub Pages
+✓ Keyword suggestions

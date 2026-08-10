@@ -1,0 +1,14 @@
+# 🏷️ Deal Finder Pro — Ko-fi Product Setup
+
+## Product Type: Membership (Subscription)
+
+### Pro — $9/month
+**Name:** Deal Finder Pro
+**Price:** $9/month
+**Description:**
+Automatically track Amazon deals so you never miss a price drop.
+✓ Hourly price scanning
+✓ Detect drops of 20%+
+✓ Beautiful deal showcase page
+✓ Auto-deploy to GitHub Pages
+✓ Built-in affiliate links

@@ -1,0 +1,48 @@
+🎬 ShortsGen Pro — Welcome Guide
+===================================
+Thank you for buying ShortsGen Pro!
+
+You've received shortsgen-pro.zip — the complete, self-contained automated
+YouTube Shorts production system. It runs on YOUR own GitHub repo using free
+GitHub Actions minutes. No server, no private dependencies. See SETUP.md inside
+the zip for the full walkthrough; the short version:
+
+---
+
+Step 1: Put it in your own GitHub repo
+1. Download and unzip shortsgen-pro.zip (attached to your purchase).
+2. Create a new GitHub repo (private is fine).
+3. Upload / push all the files to it.
+   (The media_kit YouTube-upload package is already bundled — nothing private
+    to install.)
+
+Step 2: Set Up Secrets
+In your repository:
+Settings → Secrets and variables → Actions
+Add the following secrets:
+
+  PIXABAY_API_KEY=***
+  YOUTUBE_API_KEY=***
+  YOUTUBE_CHANNEL_ID=your_channel_id
+
+(No Pixabay key? Get one free at https://pixabay.com/api/docs/)
+
+Step 3: Enable GitHub Actions
+1. Go to the Actions tab
+2. Click "I understand my workflows, go ahead and enable them"
+3. The workflow will run daily at 08:00 and 20:00 Taipei time
+
+Step 4: Watch Your First Shorts Go Live!
+Once the workflow completes, your first AI-generated Shorts will appear on your YouTube channel!
+
+---
+
+Advanced Settings
+- Custom quotes: edit data/quotes.json
+- Change TTS voice: modify VOICE_POOL in src/main.py
+- Adjust schedule: edit cron in .github/workflows/daily-shorts.yml
+
+---
+
+Support
+Have questions? Message me on Ko-fi!

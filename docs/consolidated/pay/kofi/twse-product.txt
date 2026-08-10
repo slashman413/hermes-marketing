@@ -1,0 +1,31 @@
+# 📈 TWSE Premium — Ko-fi Product Setup
+
+## Product Type: Membership (Subscription)
+
+### Tier 1: Monthly — $49/month
+**Name:** TWSE Premium — Monthly
+**Price:** $49/month
+**Description:**
+AI-driven Taiwan stock screening & trading signals, updated daily.
+✓ Scan 1700+ Taiwan stocks daily
+✓ MACD + ADX + W%R triple-filter signals
+✓ Email notifications
+✓ Excel export
+
+### Tier 2: Quarterly — $99/quarter
+**Name:** TWSE Premium — Quarterly
+**Price:** $99/quarter
+**Description:**
+✓ All Monthly features
+✓ Bollinger Bands + RSI
+✓ Historical backtest data
+✓ Custom parameters
+
+### Tier 3: Annual — $299/year
+**Name:** TWSE Premium — Annual
+**Price:** $299/year
+**Description:**
+✓ All Quarterly features
+✓ API access
+✓ Real-time LINE notifications
+✓ Priority support
