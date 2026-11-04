@@ -345,6 +345,7 @@ footer{{text-align:center;padding:40px 0;color:#475569}}
 hermes-marketing · 每日自動行銷推廣<br>
 <small>更新時間: {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}</small>
 </footer>
+<script src="https://slashmantools.us/shared/google-signup.js" defer></script>
 </body>
 </html>"""
 
