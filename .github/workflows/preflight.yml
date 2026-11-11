@@ -9,6 +9,9 @@ name: Preflight auto-post tokens
 on:
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
   preflight:
     runs-on: ubuntu-latest
