@@ -9,6 +9,9 @@ name: Seed Bluesky profile
 on:
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
   seed:
     runs-on: ubuntu-latest
